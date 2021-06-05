@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components";
+import { useAuthService } from "../services";
 import Burger from "./Burger";
 import Menu from "./Menu";
 import NavItem from "./NavItem";
@@ -55,11 +56,27 @@ const BurgeredNavLink = styled(NavLink)`
   }
 `
 function RightNav(){
+  const [state, send] = useAuthService();
+  const loginStatus = () => {
+    switch(true) {
+    case state.matches('authenticating'):
+      return "authenticating";
+    case state.matches('authenticated'):
+      return "Logged In"
+    case state.matches('unauthenticated'):
+      return "Login"
+    default:
+      return "unknown"
+    }
+  }
   return (
     <RightNavContainer>
       <NavList>
         <NavItem>
           <BurgeredNavLink href="/#faq">FAQ</BurgeredNavLink>
+        </NavItem>
+        <NavItem>
+          <BurgeredNavLink href="" onClick={()=>send("AUTH_REQUEST")}>{loginStatus()}</BurgeredNavLink>
         </NavItem>
       </NavList>
     </RightNavContainer>)

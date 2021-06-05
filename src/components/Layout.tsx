@@ -9,12 +9,5 @@ ${({ theme }: ThemeProp) => theme.base.mediaQueries.xs}{
 }
 `
 
-export const HeroLayout: React.FC = styled.div`
-        display: flex;
-        flex-direction: column;
-        position: relative;
-        grid-row: 2 / 3;
-        grid-column: 1 / 6;
-`
 
 export const foobar ={}
