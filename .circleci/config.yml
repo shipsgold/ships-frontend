@@ -83,24 +83,24 @@ jobs:
       - checkout
       - restore_cache: *restore-deps-cache
       - run:
-        name: "Update Node.js and npm"
-        command: |
-          curl -sSL "https://nodejs.org/dist/v15.10.0/node-v15.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v15.10.0-linux-x64/bin/node
-          curl https://www.npmjs.com/install.sh | sudo bash
+          name: "Update Node.js and npm"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v15.10.0/node-v15.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v15.10.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
       - run: npm install
       - run: 
-        name: "build for staging"
-        environment: 
-           SHIPS_API_URI: $STAGING_SHIPS_API_URI
-           SHIPS_FRONTEND_URI: $STAGING_FRONTEND_URI
-           SHIPS_CONTRACT_ID: $STAGING_CONTRACT_ID
+          name: "build for staging"
+          environment: 
+            SHIPS_API_URI: $STAGING_SHIPS_API_URI
+            SHIPS_FRONTEND_URI: $STAGING_FRONTEND_URI
+            SHIPS_CONTRACT_ID: $STAGING_CONTRACT_ID
         command: npm run build
       - run:
-        name: Install awscli
-        command: sudo pip install awscli
+          name: Install awscli
+          command: sudo pip install awscli
       - run:
-        name: Deploy to S3
-        command: aws s3 sync build/ $STAGING_FRONTEND_S3_BUCKET --delete
+          name: Deploy to S3
+          command: aws s3 sync build/ $STAGING_FRONTEND_S3_BUCKET --delete
       - save_cache: *save-deps-cache
 
 workflows:
