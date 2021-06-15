@@ -1,0 +1,127 @@
+version: 2
+
+aliases:
+  # -------------------------
+  #      ALIASES: Caches
+  # -------------------------
+  - &restore-deps-cache
+    key: deps-cache-{{ checksum "package-lock.json" }}
+
+  - &save-deps-cache
+    key: deps-cache-{{ checksum "package-lock.json" }}
+    paths:
+      - ~/ships-frontend/node_modules
+
+  # -------------------------
+  #  ALIASES: Branch Filters
+  # -------------------------
+  - &filter-only-master
+    branches:
+      only: main
+  - &filter-only-semantic-pr
+    branches:
+      only:  /^(pull|dependabot|fix|feat)\/.*$/
+
+defaults: &defaults
+  working_directory: ~/ships-frontend
+
+jobs:
+  test:
+    <<: *defaults
+    docker:
+      - image: circleci/node:15
+    steps:
+      - checkout
+      - restore_cache: *restore-deps-cache
+      - run: npm install
+      - run: npm install codecov
+      - run: npm test
+      - run: ./node_modules/.bin/codecov
+      - save_cache: *save-deps-cache
+
+  build:
+    <<: *defaults
+    docker:
+      - image: circleci/node:15
+    steps:
+      - checkout
+      - restore_cache: *restore-deps-cache
+      - run: npm install
+      - run: npm run build
+      - save_cache: *save-deps-cache
+
+  staging:
+    <<: *defaults
+    docker:
+      - image: circleci/node:15
+    steps:
+      - checkout
+      - restore_cache: *restore-deps-cache
+      - run: npm install
+      - run: npm run build
+      - save_cache: *save-deps-cache
+
+  release:
+    <<: *defaults
+    docker:
+      - image: circleci/node:15
+    steps:
+      - checkout
+      - restore_cache: *restore-deps-cache
+      - run: npm install
+      - run: npm run build
+      - run: npm install semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/github @semantic-release/npm @semantic-release/commit-analyzer @semantic-release/release-notes-generator @qiwi/semantic-release-gh-pages-plugin
+      - run: git checkout .
+      - run: ./node_modules/.bin/semantic-release --branches main
+      - save_cache: *save-deps-cache
+  release_staging:
+    <<: *defaults
+    docker:
+      - image: circleci/python:3.7.9-buster
+    steps:
+      - checkout
+      - restore_cache: *restore-deps-cache
+      - run:
+        name: "Update Node.js and npm"
+        command: |
+          curl -sSL "https://nodejs.org/dist/v15.10.0/node-v15.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v15.10.0-linux-x64/bin/node
+          curl https://www.npmjs.com/install.sh | sudo bash
+      - run: npm install
+      - run: 
+        name: "build for staging"
+        environment: 
+           SHIPS_API_URI: $STAGING_SHIPS_API_URI
+           SHIPS_FRONTEND_URI: $STAGING_FRONTEND_URI
+           SHIPS_CONTRACT_ID: $STAGING_CONTRACT_ID
+        command: npm run build
+      - run:
+        name: Install awscli
+        command: sudo pip install awscli
+      - run:
+        name: Deploy to S3
+        command: aws s3 sync build/ $STAGING_FRONTEND_S3_BUCKET --delete
+workflows:
+  version: 2
+  analysis:
+    jobs:
+      - test:
+          filters: *filter-only-semantic-pr
+      - build:
+          filters: *filter-only-semantic-pr
+
+  release:
+    jobs:
+      - test:
+          filters: *filter-only-master
+      - build:
+          filters: *filter-only-master
+      - hold:
+          filters: *filter-only-master
+          type: approval
+          requires:
+            - test
+            - build
+      - release:
+          filters: *filter-only-master
+          requires:
+            - hold

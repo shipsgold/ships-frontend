@@ -1,9 +1,10 @@
 {
-  "name": "ships-website",
-  "version": "0.1.0",
+  "name": "ships-frontend",
+  "version": "0.0.0-development",
   "private": true,
   "dependencies": {
-    "@shipsgold/ships-client": "file:../../ships/ships-api/shipsgold-client.tgz",
+    "@shipsgold/ships-client": "^0.0.1",
+    "@shipsgold/ships-contracts-client": "^1.0.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
