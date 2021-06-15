@@ -100,7 +100,7 @@ jobs:
           command: sudo pip install awscli
       - run:
           name: Deploy to S3
-          command: aws s3 sync build/ $STAGING_FRONTEND_S3_BUCKET --delete
+          command: aws s3 sync build/ s3://$STAGING_FRONTEND_S3_BUCKET --delete
       - save_cache: *save-deps-cache
 
 workflows:
