@@ -35,11 +35,6 @@ const HeaderContainer = styled.div`
   background: ${({theme}: ThemeProp)=> theme.colors.primary}
 
 `
-const BurgerMenu = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
 function LeftNav() {
   return (
     <LeftNavContainer>

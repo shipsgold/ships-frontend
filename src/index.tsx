@@ -3,17 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { ThemeProvider } from 'styled-components'
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { inspect } from '@xstate/inspect';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { lightTheme } from './theme'
 import { CssBaseline } from "./styles"
 import GlobalStyle from './styles/global';
 
+/*
+TODO rm and toggle on config for developmen
 inspect({
   url: "https://statecharts.io/inspect",
   iframe: false
 });
+*/
 
 
 ReactDOM.render(

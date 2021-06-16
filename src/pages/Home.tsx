@@ -3,7 +3,7 @@ import PageTemplate from "./Util"
 import logo from '../logo.svg';
 import '../App.css';
 
-function Home(_props: any) {
+function Home() {
   return (
     <div className="App">
       <header className="App-header">

@@ -34,6 +34,7 @@ const getStateFromStore = <S>(serviceKey: keyof Services, store: Store): CacheSt
   return JSON.parse(result) as S
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const saveStateToStore = <S extends State<any,any,any> >(serviceKey: keyof Services, store: Store): CacheStateSaveFunc<S> => 
   (state?: S): void => {
     if(state)

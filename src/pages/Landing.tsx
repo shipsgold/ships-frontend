@@ -9,21 +9,22 @@ import Community from "../components/Community"
 import Faq from "../components/Faq"
 import Footer from "../components/Footer"
 
-function Landing(_props: any) {
-  return (
-    <>
-      <LandingBaseLayout>
-        <Header/>
-        <Hero/>      
-        <Join/>
-        <WhatMessage/>
-        <Community/>
-        <Faq/>
-      </LandingBaseLayout>
-      <Footer/>
-    </>
-  )
+interface LandingProps {
+  address: string,
 }
+const Landing: React.FunctionComponent<LandingProps> = () => (
+  <>
+    <LandingBaseLayout>
+      <Header/>
+      <Hero/>      
+      <Join/>
+      <WhatMessage/>
+      <Community/>
+      <Faq/>
+    </LandingBaseLayout>
+    <Footer/>
+  </>
+)
 
 
 export default PageTemplate(Landing)
