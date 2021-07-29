@@ -5,8 +5,8 @@ import React from 'react';
 import { ThemeProp } from './types';
 
 const BaseMenu:React.FC<MenuProps> = styled.nav`
-  ${({ open }: MenuProps) => open ? `transform: translateY(0)` : `transform: translateY(-100%);`}
-  display: flex;
+  ${({ open }: MenuProps) => open ? `transform: translateY(0);` : `transform: translateY(-100%);`}
+  ${({ open }: MenuProps) => open ? `display:flex;` : `display:none;`}
   flex-direction: column;
   justify-content: center;
   background: ${({ theme }: ThemeProp) => theme.colors.secondary};

@@ -8,6 +8,10 @@ ${({ theme }: ThemeProp) => theme.base.mediaQueries.xs}{
         grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
 }
 `
+export const AppBaseLayout: React.FC = styled.div`
+${({ theme }: ThemeProp) => theme.base.mediaQueries.xs}{
+}
+`
 
 
 export const foobar ={}
