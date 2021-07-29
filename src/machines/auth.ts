@@ -1,11 +1,13 @@
-import { assign, createMachine, Interpreter, State } from "xstate"
+import { assign, createMachine, Interpreter, State, StateConfig } from "xstate"
 
 export type AuthContext = {
   authKey?: string
+  privKey?: string
 }
 
 type InitialContext = {
   authKey: undefined 
+  privKey: undefined
 }
 
 type AuthenticatedContext = {
@@ -30,7 +32,7 @@ export type AuthState = |
 }
 
 export type AuthInterpeter = Interpreter<AuthContext, AuthState, AuthEvents>
-export type AuthSerializedState = State<AuthContext, AuthEvents>
+export type AuthSerializedState = StateConfig<AuthContext, AuthEvents>
 
 type AuthSuccess = { type: 'AUTH_SUCCESS'; authKey: string }
 type AuthRequest = { type: 'AUTH_REQUEST' }
