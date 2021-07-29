@@ -1,32 +1,31 @@
-import nearAPI from 'near-api-js'
-
-export async function auth(): Promise<string>{
-  return 'foobar'
-}
-
-const testNetConfig = {
-  networkId: 'default',
-  nodeUrl: 'https://rpc.testnet.near.org',
-  contractName: "bob",
-  walletUrl: 'https://wallet.testnet.near.org',
-  helperUrl: 'https://helper.testnet.near.org'
-};
+import {connect, keyStores, Near, WalletConnection} from "near-api-js";
+import config, { getNetworkConfig } from "../config";
 
 
-
-export async function init(): Promise<void> {
-  const near = await nearAPI.connect({
+export async function getConnection(keyStore: keyStores.BrowserLocalStorageKeyStore):Promise<Near>{
+  return connect({
     deps: {
-      keyStore: new nearAPI.keyStores.BrowserLocalStorageKeyStore()
+      keyStore: new keyStores.BrowserLocalStorageKeyStore()
     },
-    ...testNetConfig
+    ...getNetworkConfig()
   });
-  const wallet = new nearAPI.WalletConnection(near, null);
-  wallet.requestSignIn(
-    "example-contract.testnet",     // contract requesting access 
-    "Example App",                  // optional
-  );
-
 }
 
-export {}
+export async function getWalletConnection(near: Near): Promise<WalletConnection> {
+  return new WalletConnection(near, null);
+}
+
+export const walletSignIn = async (wallet: WalletConnection, contractId: string, contractName: string): Promise<string> => {
+  if(wallet.isSignedIn() === false){
+    // eslint-disable-next-line no-underscore-dangle
+    await wallet.requestSignIn(
+      contractId,     // contract requesting access 
+      contractName,                  // optional
+      config.frontendURI, // successs
+      config.frontendURI, // failure
+    );
+  }
+  return wallet.getAccountId();
+}
+
+export default getWalletConnection 
