@@ -1,11 +1,12 @@
 import React from 'react';
 
+
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
-import { Home, Landing } from './pages';
+import { Home, Landing, Signup } from './pages';
 
 
 const App: React.VFC = () => (
@@ -22,9 +23,12 @@ const App: React.VFC = () => (
       <Route path="/profile">
         <Landing address="foobar" />
       </Route>
-      <Route path="/">
-        <Landing address="foobar" />
+      <Route path="/signup">
+        <Signup address="foobar" />
       </Route>
+      <Route path="/auth">
+        <Signup address="foobar" />
+      </Route>`
     </Switch>
   </Router>
 )
