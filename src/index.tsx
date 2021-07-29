@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import {inspect} from "@xstate/inspect";
 import './index.css';
 import { ThemeProvider } from 'styled-components'
 // eslint-disable-next-line import/no-extraneous-dependencies
@@ -8,7 +10,6 @@ import reportWebVitals from './reportWebVitals';
 import { lightTheme } from './theme'
 import { CssBaseline } from "./styles"
 import GlobalStyle from './styles/global';
-
 /*
 TODO rm and toggle on config for developmen
 inspect({
@@ -16,6 +17,10 @@ inspect({
   iframe: false
 });
 */
+inspect({
+  url: "https://statecharts.io/inspect",
+  iframe: false
+});
 
 
 ReactDOM.render(
