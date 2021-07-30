@@ -1,25 +1,16 @@
+
 import React from "react"
-import PageTemplate from "./Util"
-import { LandingBaseLayout } from "../components/Layout"
-import Header from "../components/Header"
-import Hero from "../components/Hero"
-import Join from "../components/Join"
-import WhatMessage from "../components/WhatMessage"
-import Community from "../components/Community"
-import Faq from "../components/Faq"
-import Footer from "../components/Footer"
+import { AppPageTemplate } from "./Util"
+import LoginForm from "../components/LoginForm"
 
 interface LoginProps {
   address: string,
 }
-const Landing: React.FunctionComponent<LoginProps> = () => (
+const Login: React.FunctionComponent<LoginProps> = () => (
   <>
-    <LandingBaseLayout>
-      <Header/>
-    </LandingBaseLayout>
-    <Footer/>
+    <LoginForm/>
   </>
 )
 
 
-export default PageTemplate(Landing)
+export default AppPageTemplate(Login)
