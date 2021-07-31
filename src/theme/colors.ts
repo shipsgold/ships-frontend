@@ -1,4 +1,5 @@
 export interface BaseColors {
+    black: string,
     primary: string,
     secondary: string,
     tertiary: string,
@@ -16,6 +17,7 @@ export interface Colors extends BaseColors {
 
 const colors = {
   primary: "#FFDF08",
+  black: "#333333",
   secondary: "#B036E8",
   tertiary: "#ff5C97",
   success: "#00D876",
@@ -25,7 +27,7 @@ const colors = {
 
 export const lightColors: Colors = {
   ...colors,
-  text: "black",
+  text: "#333333",
   secondaryText: "white",
   background: "white",
   button: "#FFDF08"
