@@ -3,7 +3,7 @@ import { ThemeProp } from "./types";
 
 const Input = styled.input`
 background-color: ${({theme}: ThemeProp)=>theme.colors.button};
-font-size: 2.0rem;
+font-size: 1.3rem;
 width: 220px;
 height: 100px;
 border: 4px;
@@ -14,16 +14,22 @@ border-style: solid;
 export const EmailInput = styled.input.attrs({
   type: "email",
   focus: "none",
-  placeholder:"Enter your email"
+  placeholder:"What's your email address?"
 })
 `
- border: 4px solid ${({ theme }: ThemeProp) => theme.colors.primary};
+ border: 6px solid ${({ theme }: ThemeProp) => theme.colors.primary};
  border-radius: 100px;
  height: 80px;
- font-size: 2rem;
  background-color: white;
  padding: 20px;
-&:focus {
+ 
+::placeholder {
+  text-align: center; 
+  font-size: 1.2rem;
+}
+
+input:focus {
+  text-align: left; 
   outline: none;
 }
 `;
