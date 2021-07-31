@@ -6,37 +6,29 @@ import { ThemeProp } from "./types"
 import CommonButton, {CommonExtraRoundButton} from "./CommonButton";
 import DividerWithText from "./DividerWithText";
 import { EmailInput } from "./Input";
-import client from "../api/client";
 import { useUserService } from "../services";
   
-const ButtonLink = styled.a`
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: lighter;
-  font-style: normal;
-`
 const SignupButton = styled(CommonButton)`
-width: max(25vw, 100px);
-font-size: 2.0rem;
-height: 80px;
-${({ theme }: ThemeProp) => theme.base.mediaQueries.md} {
-  height: 80px;
+  width: 90vw;
+  height: 65px;
+${({ theme }: ThemeProp) => theme.base.mediaQueries.sm} {
+  width: 472px;
 }
 `
 const SignupEmailButton = styled(CommonExtraRoundButton)`
-width: max(25vw, 100px);
-font-size: 2.0rem;
-height: 80px;
-${({ theme }: ThemeProp) => theme.base.mediaQueries.md} {
-  height: 80px;
+width: 90vw;
+height: 65px;
+font-weight: 900;
+border-color: black;
+${({ theme }: ThemeProp) => theme.base.mediaQueries.sm} {
+  width: 472px;
 }
 `
 const SignupEmailInput = styled(EmailInput)`
-width: max(25vw, 100px);
-font-size: 2.0rem;
-height: 80px;
-${({ theme }: ThemeProp) => theme.base.mediaQueries.md} {
-  height: 80px;
+width: 90vw;
+height: 65px;
+${({ theme }: ThemeProp) => theme.base.mediaQueries.sm} {
+  width: 472px;
 }
 `
 const SignupContainer: React.FC = styled.div`
@@ -46,15 +38,17 @@ const SignupContainer: React.FC = styled.div`
 `
 const EmailMessage: React.FC = styled.div`
   text-align: center;
-  padding:20px;
+  margin-bottom: 2px;
+  font-size: 1.3rem;
 `
 const SignupMessage: React.FC = styled.span`
   font-size: 2.5rem;
   text-align: center;
-  padding:20px;
+  margin-bottom: 40px
 `
 const SignupBold: React.FC = styled.span`
-  font-weight:700;
+  font-family: 'proxima-nova-condensed', ${({ theme }: ThemeProp) => theme.text.primary};
+  font-weight:800;
 `
 
 const SignupFormContainer: React.FC = styled.div`
@@ -101,7 +95,7 @@ function SignupForm(): React.ReactElement {
       <SignupContainer>
         <SignupFormContainer>
           <SignupMessage>
-            Signup for <SignupBold>SHIPS!</SignupBold>
+            Sign up for <SignupBold>SHIPS!</SignupBold>
           </SignupMessage>
           <SignupButton onClick={()=>{window.location.href = githubLink}}> Sign up with Github
           </SignupButton> 
@@ -109,7 +103,7 @@ function SignupForm(): React.ReactElement {
           Sign up with Near 
           </SignupButton>
           <DividerWithText>OR</DividerWithText>
-          <EmailMessage> Enter your email address to sign up</EmailMessage>
+          <EmailMessage> Sign up with your email address</EmailMessage>
           <SignupEmailInput />
           <SignupEmailButton>Sign up with email</SignupEmailButton>
         </SignupFormContainer>
