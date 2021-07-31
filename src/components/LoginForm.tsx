@@ -5,53 +5,61 @@ import { useLocation, useHistory } from "react-router-dom";
 import { ThemeProp } from "./types"
 import CommonButton, {CommonExtraRoundButton} from "./CommonButton";
 import DividerWithText from "./DividerWithText";
-import { EmailInput } from "./Input";
-import client from "../api/client";
 import { useUserService } from "../services";
-import ToolTip, {ToolTipContainer} from "./ToolTip";
+import SnackBar from "./Snackbar";
+import ToolTip, {ToolTipContainer, ToolTipBody} from "./ToolTip";
   
-const LoginButton = styled(CommonButton)`
-width: max(25vw, 100px);
-font-size: 2.0rem;
-height: 80px;
-${({ theme }: ThemeProp) => theme.base.mediaQueries.md} {
-  height: 80px;
-}
-`
+
 const RecoveryToolTip = styled(ToolTip)`
-font-size: 1.5rem;
-width: max(20vw, 100px);
+width: 90vw;
 margin: 0 auto;
 display: flex;
 align-self: center;
-
 `
 const RecoverContainer = styled.div`
 display: flex;
 flex-direction: column;
 align-items: center;
+
+ ${ToolTipBody}{
+    font-size: 0.99rem;
+    width: 300px;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+ }
+
 &:hover ${ToolTipContainer} {
   visibility: visible;
   transition: opacity 0.5s ease;
   opacity: 1;
-
+}
+&:click ${ToolTipContainer} {
+  visibility: visible;
+  transition: opacity 0.5s ease;
+  opacity: 1;
 }
 `
 const RecoveryButton = styled(CommonExtraRoundButton)`
-width: max(25vw, 100px);
+width: 90vw;
 background-color: ${({theme}: ThemeProp) => theme.colors.background};
-font-size: 2.0rem;
-height: 80px;
+height: 65px;
+font-weight:900;
+${({ theme }: ThemeProp) => theme.base.mediaQueries.sm} {
+  width: 472px;
+}
 :hover {
   opacity: 1;
 }
-
-
-${({ theme }: ThemeProp) => theme.base.mediaQueries.md} {
-  height: 80px;
-}
 `
 
+const LoginButton = styled(CommonButton)`
+width: 90vw;
+height: 65px;
+${({ theme }: ThemeProp) => theme.base.mediaQueries.sm} {
+  width: 472px;
+}
+`
 const LoginContainer: React.FC = styled.div`
   display: flex;
   flex-direction: column;
@@ -61,9 +69,10 @@ const LoginContainer: React.FC = styled.div`
 const LoginMessage: React.FC = styled.span`
   font-size: 2.5rem;
   text-align: center;
-  padding:20px;
+  margin-bottom: 45px; 
 `
 const LoginBold: React.FC = styled.span`
+  font-family: 'proxima-nova-condensed', ${({ theme }: ThemeProp) => theme.text.primary};
   font-weight:700;
 `
 
@@ -129,6 +138,7 @@ create a new account.</RecoveryToolTip>
       </LoginContainer>
     </div>
   )
+  // <SnackBar snackbar="success">Hello World</SnackBar>
 }
 
 export default LoginForm;
