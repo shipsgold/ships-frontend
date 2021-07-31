@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import React from "react";
-import { isPropertySignature } from "typescript";
-import BaseStyledButton from "./Button";
 import { ThemeProp } from "./types";
 
 export const ToolTipBody = styled.div`
