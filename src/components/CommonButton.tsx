@@ -2,7 +2,7 @@ import styled from "styled-components";
 import BaseStyledButton from "./Button";
 import { ThemeProp } from "./types";
 
-const CommonButton = styled(BaseStyledButton)`
+export const CommonButton = styled(BaseStyledButton)`
 background-color: ${({theme}: ThemeProp)=>theme.colors.button};
 font-size: 1.3rem;
 font-weight: 900;
@@ -15,7 +15,7 @@ border-style: solid;
 }
 border-radius: 16px;
 border-style: solid;
-border-color: ${({theme}: ThemeProp)=>theme.colors.black}
+border-color: ${({theme}: ThemeProp)=>theme.colors.black};
 color: ${({theme}: ThemeProp)=>theme.colors.black};
 border-width: 4px;
 
@@ -26,6 +26,7 @@ border-width: 5px;
 export const CommonRoundedButton = styled(BaseStyledButton)`
 background-color: ${({theme}: ThemeProp)=>theme.colors.button};
 color: ${({theme}: ThemeProp)=>theme.colors.black};
+border-color: ${({theme}: ThemeProp)=>theme.colors.black};
 font-size: 1.3rem;
 width: 220px;
 height: 100px;
