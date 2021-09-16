@@ -6,7 +6,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import { Home, Landing, Signup, Login} from './pages';
+import { Home, Landing, Signup, Login, SignupThankyou} from './pages';
 
 
 const App: React.VFC = () => (
@@ -14,9 +14,7 @@ const App: React.VFC = () => (
     {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
     <Switch>
-      <Route path="/home">
-        <Landing address="foobar" />
-      </Route>
+
       <Route path="/about">
         <Home />
       </Route>
@@ -29,12 +27,18 @@ const App: React.VFC = () => (
       <Route path="/login">
         <Login address="foobar" />
       </Route>
+      <Route path="/signed-up">
+        <SignupThankyou address="foobar" />
+      </Route>
       <Route path="/signup">
         <Signup address="foobar" />
       </Route>
       <Route path="/auth">
         <Signup address="foobar" />
       </Route>`
+      <Route path="/">
+        <Landing address="foobar" />
+      </Route>
     </Switch>
   </Router>
 )
