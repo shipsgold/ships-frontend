@@ -16,6 +16,12 @@ const LeftNavContainer: React.FC = styled.div`
   display: flex;
 `
 const NavList: React.FC = styled.div`
+  display: flex;
+  justify-content: space-between;
+  ${NavLink} {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  } 
 `
 
 const RightNavContainer = styled.div`
@@ -32,9 +38,12 @@ const HeaderContainer = styled.div`
   grid-row: 1;
   grid-column: 1/ 6;
   z-index: ${({theme}: ThemeProp)=> theme.base.zIndices.background};
-  background: ${({theme}: ThemeProp)=> theme.colors.primary}
-
+  background: ${({theme}: ThemeProp)=> theme.colors.primary};
 `
+const AppHeaderContainer = styled(HeaderContainer)`
+  padding: 1.1rem;
+`
+
 function LeftNav() {
   return (
     <LeftNavContainer>
@@ -67,12 +76,10 @@ function RightNav(){
   return (
     <RightNavContainer>
       <NavList>
-        <NavItem>
-          <BurgeredNavLink href="/#faq">FAQ</BurgeredNavLink>
-        </NavItem>
-        <NavItem>
-          <BurgeredNavLink href="" onClick={()=>send("AUTH_REQUEST")}>{loginStatus()}</BurgeredNavLink>
-        </NavItem>
+        <BurgeredNavLink href="/#faq">FAQ</BurgeredNavLink>
+        <BurgeredNavLink href="/signup">Signup</BurgeredNavLink>
+        <BurgeredNavLink href="" onClick={()=>send("AUTH_REQUEST")}>{loginStatus()}</BurgeredNavLink>
+        <BurgeredNavLink href="" onClick={()=>send("AUTH_REQUEST")}>Wallet</BurgeredNavLink>
       </NavList>
     </RightNavContainer>)
 }
@@ -99,5 +106,18 @@ export default function Header(): React.ReactElement{
         <RightNav/>
       </HeaderContainer>
     </>
+  )
+}
+export function AppHeader(): React.ReactElement{
+  const [open, setOpen] = useState(false);
+  return (
+    <div>
+      <BurgerContainer open={open} setOpen={setOpen} onClick={() => setOpen(!open)} />
+      <MenuContainer open={open} setOpen={setOpen}/>
+      <AppHeaderContainer>
+        <LeftNav />
+        <RightNav/>
+      </AppHeaderContainer>
+    </div>
   )
 }

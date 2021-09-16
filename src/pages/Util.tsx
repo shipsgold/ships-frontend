@@ -1,6 +1,6 @@
 import React from "react"
 import { AppBaseLayout } from "../components/Layout"
-import  AppHeader  from "../components/AppHeader"
+import  {AppHeader} from "../components/Header"
 
 export default function PageTemplate<T>(Page: React.FC<T>): React.FC<T> {
   return (props: T) => (
