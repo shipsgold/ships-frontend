@@ -10,10 +10,19 @@ export interface SnackBarProps{
 
 const SnackBarBody = styled.div<SnackBarProps>`
 bottom: 100px;
-display: block;
+display: flex;
 position: fixed;
-width: 100;
+width: 400px;
+height: 45px;
+font-weight: 900;
+font-size: 1.1rem;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+color: ${({theme}: ThemeProp)=> theme.colors.text};
 background-color:${(props)=> props.theme.colors[props.snackbar]};
+border-radius: 6px;
+filter: drop-shadow(2px 2px 5px rgba(0,0,0,0.6));
 `
 const SnackBarHiddenCheck = styled.input.attrs({
   type: "checkbox",
@@ -24,6 +33,7 @@ const SnackBarHiddenCheck = styled.input.attrs({
 `
 const SnackBarWrapper = styled.div`
 
+margin: 0 auto;
 
 `
 const SnackBar: React.FC<SnackBarProps> = (props: SnackBarProps) =>{
