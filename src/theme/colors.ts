@@ -20,9 +20,9 @@ const colors = {
   black: "#333333",
   secondary: "#B036E8",
   tertiary: "#ff5C97",
-  success: "#00D876",
-  failure: "#F73182",
-  info: "#00CBE0",
+  success: "#3DFCFC",
+  failure: "#A4FF4D",
+  info: "#EEFF4D",
 }
 
 export const lightColors: Colors = {
