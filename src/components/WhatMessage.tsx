@@ -47,10 +47,10 @@ const CoinBackgroundContainer = styled.div`
 const CoinLarge = styled.div`
   grid-column: 2 / 3;
   grid-row: 1 / 3;
-  background-image: url('/images/coin3-01.svg');
-  background-repeat: no-repeat;
   width: 100%;
   z-index: ${({theme}: ThemeProp) => theme.base.zIndices.modal};
+  background-image: url('/images/coin3-01.svg');
+  background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
   background-repeat: space;
