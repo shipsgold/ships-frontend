@@ -16,6 +16,7 @@ margin: 0 auto;
 display: flex;
 align-self: center;
 `
+
 const RecoverContainer = styled.div`
 display: flex;
 flex-direction: column;
@@ -27,6 +28,7 @@ align-items: center;
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
+  visibility: visible;
  }
 
 &:hover ${ToolTipContainer} {
@@ -138,7 +140,7 @@ create a new account.</RecoveryToolTip>
       </LoginContainer>
     </div>
   )
-  // <SnackBar snackbar="success">Hello World</SnackBar>
+  // <SnackBar snackbar="info">Hello World</SnackBar>
 }
 
 export default LoginForm;
