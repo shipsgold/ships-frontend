@@ -15,7 +15,6 @@ interface LandingProps {
 const Landing: React.FunctionComponent<LandingProps> = () => (
   <>
     <LandingBaseLayout>
-      <Header/>
       <Hero/>      
       <Join/>
       <WhatMessage/>
