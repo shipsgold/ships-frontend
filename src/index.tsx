@@ -16,11 +16,11 @@ inspect({
   url: "https://statecharts.io/inspect",
   iframe: false
 });
-*/
 inspect({
   url: "https://statecharts.io/inspect",
   iframe: false
 });
+*/
 
 
 ReactDOM.render(

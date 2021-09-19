@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import { AppHeader } from './components/Header';
 import { AppBaseLayout } from './components/Layout';
-import { Home, Landing, Signup, Login, SignupThankyou} from './pages';
+import {Account, Home, Landing, Signup, Login, SignupThankyou} from './pages';
 
 
 const App: React.VFC = () => (
@@ -26,8 +26,8 @@ const App: React.VFC = () => (
         <Route path="/users">
           <Home />
         </Route>
-        <Route path="/profile">
-          <Landing address="foobar" />
+        <Route path="/account">
+          <Account address="foobar" />
         </Route>
         <Route path="/login">
           <Login address="foobar" />

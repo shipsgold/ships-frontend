@@ -1,5 +1,6 @@
 export interface BaseColors {
     black: string,
+    gray: string,
     primary: string,
     secondary: string,
     tertiary: string,
@@ -18,6 +19,7 @@ export interface Colors extends BaseColors {
 const colors = {
   primary: "#FFDF08",
   black: "#333333",
+  gray: "#f2f2f2",
   secondary: "#B036E8",
   tertiary: "#ff5C97",
   success: "#3DFCFC",
