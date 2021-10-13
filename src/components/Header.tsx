@@ -6,15 +6,9 @@ import Menu from "./Menu";
 import NavItem from "./NavItem";
 import NavLink from "./NavLink";
 import { ThemeProp } from "./types";
+import config from "../config";
 
 
-const LeftNavContainer: React.FC = styled.div`
-  flex: 1;
-  align-items: center;
-  justify-content: flex-start;
-  align-content: space-between;
-  display: flex;
-`
 const NavList: React.FC = styled.div`
   display: flex;
   justify-content: space-between;
@@ -23,6 +17,23 @@ const NavList: React.FC = styled.div`
     padding-left: 1.5rem;
   } 
 `
+
+const LeftNavContainer: React.FC = styled.div`
+  flex: 1;
+  ${NavItem} {
+    padding-left: 0rem;
+  }
+  align-items: center;
+  justify-content: flex-start;
+  align-content: space-between;
+  display: flex;
+  ${({theme}: ThemeProp)=> theme.base.mediaQueries.md} {
+    ${NavItem} {
+      padding-left: 1.5rem;
+    }
+  }
+`
+
 
 const RightNavContainer = styled.div`
   align-items: center;
@@ -77,30 +88,29 @@ function RightNav(){
     <RightNavContainer>
       <NavList>
         <BurgeredNavLink href="/#faq">FAQ</BurgeredNavLink>
-        <BurgeredNavLink href="/signup">Signup</BurgeredNavLink>
-        <BurgeredNavLink href="" onClick={()=>send("AUTH_REQUEST")}>{loginStatus()}</BurgeredNavLink>
-        <BurgeredNavLink href="" onClick={()=>send("AUTH_REQUEST")}>Wallet</BurgeredNavLink>
+        {config.env !== "production" &&
+        <>
+          <BurgeredNavLink href="/signup">Signup</BurgeredNavLink>
+          <BurgeredNavLink href="" onClick={()=>send("AUTH_REQUEST")}>{loginStatus()}</BurgeredNavLink>
+          <BurgeredNavLink href="" onClick={()=>send("AUTH_REQUEST")}>Wallet</BurgeredNavLink>
+        </>
+        }
       </NavList>
     </RightNavContainer>)
 }
 
 const MenuContainer = styled(Menu)`
-  grid-column: 1 / 6;
-  grid-row: 1 / 2;
 `
 const BurgerContainer = styled(Burger)`
-  grid-column: 5 / 6;
-  grid-row: 1 / 2;
   align-self: center;
   justify-self:
+  margin-left: 20px;
 `
 
 export default function Header(): React.ReactElement{
   const [open, setOpen] = useState(false);
   return (
     <>
-      <BurgerContainer open={open} setOpen={setOpen} onClick={() => setOpen(!open)} />
-      <MenuContainer open={open} setOpen={setOpen}/>
       <HeaderContainer>
         <LeftNav />
         <RightNav/>
@@ -112,12 +122,12 @@ export function AppHeader(): React.ReactElement{
   const [open, setOpen] = useState(false);
   return (
     <div>
-      <BurgerContainer open={open} setOpen={setOpen} onClick={() => setOpen(!open)} />
-      <MenuContainer open={open} setOpen={setOpen}/>
-      <AppHeaderContainer>
-        <LeftNav />
-        <RightNav/>
-      </AppHeaderContainer>
+      <div>
+        <AppHeaderContainer>
+          <LeftNav />
+          <RightNav/>
+        </AppHeaderContainer>
+      </div>
     </div>
   )
 }
