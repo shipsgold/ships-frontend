@@ -9,8 +9,25 @@ height: 100px;
 border: 4px;
 border-radius: 4px;
 border-style: solid;
-
 `
+
+export const CommonInput = styled.input.attrs({
+  focus: "none",
+})`
+background-color: ${({theme}: ThemeProp)=>theme.colors.gray};
+font-size: 1.3rem;
+width: 470px;
+height: 70px;
+border: 4px;
+border-radius: 4px;
+border-style: none;
+`
+
+export const InputLabel= styled.span`
+  font-size: 1.3rem;
+  font-weight: 800;
+`
+
 export const EmailInput = styled.input.attrs({
   type: "email",
   focus: "none",
