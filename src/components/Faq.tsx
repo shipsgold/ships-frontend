@@ -10,7 +10,10 @@ const FaqLayoutContainer: React.FC = styled.div`
   flex-direction: column;
 `
 
-const FaqContainer: React.FC = styled.div`
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const FaqContainer: React.FC = styled.div.attrs((_props)=>({
+  id:"faq"
+}))`
   flex: 1;
   display: flex;
   flex-direction: column;
