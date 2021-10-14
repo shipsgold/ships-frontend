@@ -5,7 +5,7 @@ import config, { getNetworkConfig } from "../config";
 export async function getConnection(keyStore: keyStores.BrowserLocalStorageKeyStore):Promise<Near>{
   return connect({
     deps: {
-      keyStore: new keyStores.BrowserLocalStorageKeyStore()
+      keyStore
     },
     ...getNetworkConfig()
   });

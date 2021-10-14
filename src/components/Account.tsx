@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { ThemeProp } from "./types"
-import {TabBar, TabBarProps,TabProps, TabView} from "./Tabs";
+import {TabBar, TabView} from "./Tabs";
 import AccountProjectView from "./AccountProjectView";
 import AccountTokenView from "./AccountTokenView";
 
@@ -41,6 +41,7 @@ const launchTabView:TabView = {
       </div>
     </>
   ),
+  // eslint-disable-next-line no-alert
   onclick: ()=> alert("Launching new Project")
 }
 const AccountViewContainer = styled.div`

@@ -1,15 +1,10 @@
-import React, { useState } from "react"
+import React from "react";
 import styled from "styled-components";
-import Burger from "./Burger";
 import Header from "./Header";
-import Menu from "./Menu";
-import NavItem from "./NavItem";
-import NavLink from "./NavLink";
-import { ThemeProp } from "./types";
+
 
 
 const ApplicationHeader = styled(Header)`
-  
   padding: 1.1rem;
 `
 /* <BurgerContainer open={open} setOpen={setOpen} onClick={() => setOpen(!open)} />
@@ -17,13 +12,7 @@ const ApplicationHeader = styled(Header)`
         */
 
 export default function AppHeader(): React.ReactElement{
-  const [open, setOpen] = useState(false);
-  /* <>
-      <HeaderContainer>
-        <LeftNav />
-        <RightNav/>
-      </HeaderContainer>
-    </> */
+  // const [open, setOpen] = useState(false);
   return (
     <ApplicationHeader />
   )

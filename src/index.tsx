@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import {inspect} from "@xstate/inspect";
 import './index.css';
 import { ThemeProvider } from 'styled-components'
 // eslint-disable-next-line import/no-extraneous-dependencies

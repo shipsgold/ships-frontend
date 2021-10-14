@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import styled from "styled-components"
 import React, { useEffect } from "react"
 import qs from "qs";
@@ -6,7 +7,6 @@ import { ThemeProp } from "./types"
 import {CommonButton, CommonExtraRoundButton} from "./CommonButton";
 import DividerWithText from "./DividerWithText";
 import { useUserService } from "../services";
-import SnackBar from "./Snackbar";
 import ToolTip, {ToolTipContainer, ToolTipBody} from "./ToolTip";
   
 
@@ -107,7 +107,6 @@ function LoginForm(): React.ReactElement {
   useEffect(() => {
     const { code } = qs.parse(location.search, { ignoreQueryPrefix: true })
     if(code) {
-      console.log("calling git auth now")
       send("GIT_AUTH",{code: code.toString()})
       history.push("/auth")
     }

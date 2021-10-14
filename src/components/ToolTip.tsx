@@ -35,6 +35,7 @@ export const ToolTipContainer = styled.div`
   visibility: hidden;
   opacity: 0;
 `
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ToolTip: React.FC<any> = ({children}: any) =>
   (
     <ToolTipContainer>

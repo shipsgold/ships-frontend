@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import styled from "styled-components";
-import React, { ReactNode, useState } from "react";
+import React, {useState } from "react";
 import { ThemeProp } from "./types";
 
 export interface TabProps {
@@ -32,7 +33,9 @@ const TabButton = styled.button<TabProps>`
 
 export interface TabView{
   label: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   view : React.FC<any>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onclick?: (...args: any)=>void,
 }
 

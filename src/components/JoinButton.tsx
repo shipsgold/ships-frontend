@@ -4,7 +4,8 @@ import { ThemeProp } from "./types";
 
 
 const JoinButton = styled(CommonButton).attrs(
-  props => ({
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  props=> ({
     as: "a",
     href: "https://docs.google.com/forms/d/e/1FAIpQLSeg4C9rmJlzs0u4D4dYx3_y5ouWFNkczw1pjkIZUIgV7ifvfg/viewform"
   })

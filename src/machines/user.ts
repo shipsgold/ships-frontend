@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { KeyPairEd25519 } from "near-api-js/lib/utils";
 import { assign, createMachine, Interpreter, State } from "xstate"
 import { keyStores } from "near-api-js";
 import { encode } from "bs58";
 import config, {apiClient, getNetworkConfig} from "../config";
 import {getWalletConnection, walletSignIn, getConnection} from "../api/near"
-import client from "../api/client";
 
 export type EmailVerificationStatus = "pending" | "verified" | "unknown"
 export type UserContext = {
@@ -126,20 +127,16 @@ const verifyEmail = async (_context: any, _event: any): Promise<string> => "emai
 const verifyWallet = async (_context: any, _event: any): Promise<string> => {
   const keystore = new keyStores.BrowserLocalStorageKeyStore();
   const near = await getConnection(keystore);
-  console.log("past")
   const wc = await getWalletConnection(near);
-  console.log(wc)
   const accountId = await walletSignIn(wc, config.contractId, "Ships Dev");
   try{
     const nonce = await apiClient.getNonce();
-    console.log(nonce)
     const keyPair = await keystore.getKey(getNetworkConfig().networkId,accountId);
     const { publicKey, signature } = keyPair.sign(Buffer.from(nonce));
     const res = await apiClient.verifyNonce(nonce, accountId, publicKey.toString(), encode(signature));
-    console.log("results: ", res)
     
   }catch(e){
-    console.log(e)
+    throw new Error("could not verify git user");
   }
   // const approved = await client.verifyNonce(nonce, publicKey, signature, accountId);
   return accountId
