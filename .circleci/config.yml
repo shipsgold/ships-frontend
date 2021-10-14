@@ -92,9 +92,7 @@ jobs:
           name: "build for staging"
           environment: 
             REACT_APP_SHIPS_ENV: "staging" 
-          command: REACT_APP_SHIPS_API_URI=$STAGING_SHIPS_API_URI \
-          REACT_APP_SHIPS_FRONTEND_URI=$STAGING_FRONTEND_URI \
-          REACT_APP_SHIPS_CONTRACT_ID=$STAGING_CONTRACT_ID npm run build
+          command: REACT_APP_SHIPS_API_URI=$STAGING_SHIPS_API_URI REACT_APP_SHIPS_FRONTEND_URI=$STAGING_FRONTEND_URI REACT_APP_SHIPS_CONTRACT_ID=$STAGING_CONTRACT_ID npm run build
       - run:
           name: Install awscli
           command: sudo pip install awscli
