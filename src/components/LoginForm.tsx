@@ -3,7 +3,7 @@ import React, { useEffect } from "react"
 import qs from "qs";
 import { useLocation, useHistory } from "react-router-dom";
 import { ThemeProp } from "./types"
-import CommonButton, {CommonExtraRoundButton} from "./CommonButton";
+import {CommonButton, CommonExtraRoundButton} from "./CommonButton";
 import DividerWithText from "./DividerWithText";
 import { useUserService } from "../services";
 import SnackBar from "./Snackbar";
