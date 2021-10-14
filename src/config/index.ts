@@ -8,7 +8,7 @@ export interface ShipsConfig {
    env: string
 }
 // eslint-disable-next-line no-debugger
-const env =  process.env.SHIPS_ENV || "development"; 
+const env =  process.env.REACT_APP_SHIPS_ENV || "development"; 
 
 interface NearNetworkConfig {
   networkId: string,
@@ -35,10 +35,10 @@ const networksConfig: NetworkConfigs = {
 }
 
 const config: ShipsConfig = {
-  apiURI: process.env.SHIPS_API_URI || "http://localhost",
-  apiPort: process.env.SHIPS_API_PORT || "8081",
+  apiURI: process.env.REACT_APP_SHIPS_API_URI || "http://localhost",
+  apiPort: process.env.REACT_APP_SHIPS_API_PORT || "8081",
   contractId: process.env.REACT_APP_SHIPS_PROJECT_CONTRACT_NAME || "",
-  frontendURI: process.env.SHIPS_FRONTEND_URI || "http://localhost:3000", 
+  frontendURI: process.env.REACT_APP_SHIPS_FRONTEND_URI || "http://localhost:3000", 
   env,
 }
 
