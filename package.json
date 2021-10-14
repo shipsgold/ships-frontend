@@ -3,8 +3,8 @@
   "version": "0.0.0-development",
   "private": true,
   "dependencies": {
-    "@shipsgold/ships-client": "file:shipsgold-client.tgz",
-    "@shipsgold/ships-contracts-client": "^1.0.2",
+    "@shipsgold/ships-client": "^1.0.0",
+    "@shipsgold/ships-contracts-client": "^1.1.0",
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
