@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import BaseStyledButton from "./Button";
 import { ThemeProp } from "./types";
 
 const DividerWithText = styled.div`

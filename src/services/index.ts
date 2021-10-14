@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react'
-import { AnyEventObject, DefaultContext, EventObject, interpret, Interpreter, State, StateConfig, StateMachine, Typestate } from 'xstate'
+import { AnyEventObject, EventObject, interpret, Interpreter, State, StateConfig, StateMachine, Typestate } from 'xstate'
 import { useService } from "@xstate/react";
-import {AuthContext, AuthEvents, AuthInterpeter, authMachine, AuthMachine, AuthSerializedState, AuthState} from '../machines'
+import {AuthContext, AuthEvents,  authMachine, AuthMachine, AuthSerializedState, AuthState} from '../machines'
 import { localStore } from "../storage"
 import { Store } from '../storage/store';
 import { UserMachine, userMachine, UserSerializedState, UserContext, UserState, UserEvents } from '../machines/user';
@@ -67,9 +69,11 @@ const services: Services = {
 }
 
 const useServiceMachine = <C, S extends Typestate<C> = {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     value: any;
     context: C;
 }, E extends EventObject= AnyEventObject>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (machine: StateMachine<C, any, E, S>, 
     cache: ServiceCacheEntry<State<C, E>, C, S, E>,
     cleanup: boolean) => () => {

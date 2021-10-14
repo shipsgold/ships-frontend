@@ -1,5 +1,4 @@
 import ShipsApiClient from "@shipsgold/ships-client";
-import { keyStores } from "near-api-js"
 
 export interface ShipsConfig {
    apiURI: string
@@ -35,12 +34,6 @@ const networksConfig: NetworkConfigs = {
   },
 }
 
-export const getNetworkConfig = (ev: string = env): NearNetworkConfig => {
-  if(networksConfig[ev] === undefined) throw new Error(`Network does not exist ${config.env}`)
-  return networksConfig[ev]
-}
-
-
 const config: ShipsConfig = {
   apiURI: process.env.SHIPS_API_URI || "http://localhost",
   apiPort: process.env.SHIPS_API_PORT || "8081",
@@ -49,6 +42,10 @@ const config: ShipsConfig = {
   env,
 }
 
+export const getNetworkConfig = (ev: string = env): NearNetworkConfig => {
+  if(networksConfig[ev] === undefined) throw new Error(`Network does not exist ${config.env}`)
+  return networksConfig[ev]
+}
 
 const getApi = () => {
   const apiURL = new URL(config.apiURI)

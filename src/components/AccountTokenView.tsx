@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import React, { useEffect, useState } from "react"
+import React, {useState } from "react"
 import { ThemeProp } from "./types"
  
 export const AccountTokenViewContainer = styled.div`
@@ -16,7 +16,7 @@ grid-template-columns: repeat(4, 1fr);
 }
 `
 
-
+/*
 const AccountTokenContainer = styled.div`
   background: ${({theme}: ThemeProp) => theme.colors.gray};
   height: 338px;
@@ -32,6 +32,8 @@ const AccountTokenTitle=styled.span`
   font-weight: 300; 
   text-align: center;
 `
+*/
+
 const TokenCard = styled.div`
 background-color:white;
 border-color: ${({theme}: ThemeProp) => theme.colors.gray};
@@ -77,7 +79,7 @@ Array.from(Array(10).keys()).map(()=>({img,
   name
 }))
 
-const AccountTokenCard = (props:any): React.ReactElement => {
+const AccountTokenCard = (props: {token: Token}): React.ReactElement => {
 
   const {token} = props;
   return (

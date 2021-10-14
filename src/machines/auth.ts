@@ -1,4 +1,4 @@
-import { assign, createMachine, Interpreter, State, StateConfig } from "xstate"
+import { assign, createMachine, Interpreter, StateConfig } from "xstate"
 
 export type AuthContext = {
   authKey?: string
