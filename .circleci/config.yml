@@ -98,7 +98,38 @@ jobs:
           command: sudo pip install awscli
       - run:
           name: Deploy to S3
-          command: aws s3 sync build/ s3://$STAGING_FRONTEND_S3_BUCKET --delete
+          command: | 
+          aws s3 sync build/ s3://$STAGING_FRONTEND_S3_BUCKET --delete
+          aws cloudfront create-invalidation --distribution-id $STAGING_CF_DISTRUBITION_ID --paths /index.html
+      - save_cache: *save-deps-cache
+
+  release_production:
+    <<: *defaults
+    docker:
+      - image: circleci/python:3.7.9-buster
+    steps:
+      - checkout
+      - restore_cache: *restore-deps-cache
+      - run:
+          name: "Update Node.js and npm"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v15.10.0/node-v15.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v15.10.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+      - run: npm install
+      - run: 
+          name: "build for production"
+          environment: 
+            REACT_APP_SHIPS_ENV: "production" 
+          command: REACT_APP_SHIPS_API_URI=$PRODUCTION_SHIPS_API_URI REACT_APP_SHIPS_FRONTEND_URI=$PRODUCTION_FRONTEND_URI REACT_APP_SHIPS_CONTRACT_ID=$PRODUCTION_CONTRACT_ID npm run build
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Deploy to S3
+          command: | 
+          aws s3 sync build/ s3://$PRODUCTION_FRONTEND_S3_BUCKET --delete
+          aws cloudfront create-invalidation --distribution-id $PRODUCTION_CF_DISTRUBITION_ID --paths /index.html
+
       - save_cache: *save-deps-cache
 
 workflows:
@@ -130,3 +161,14 @@ workflows:
           filters: *filter-only-master
           requires:
             - hold
+      - production_hold:
+          filters: *filter-only-master
+          type: approval
+          requires:
+            - test
+            - build
+      - release_production:
+          filters: *filter-only-master
+          requires:
+            - release_staging
+            - production_hold
