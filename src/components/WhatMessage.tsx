@@ -62,7 +62,7 @@ function WhatMessage(): React.ReactElement {
   return (
     <WhatContainer>
       <Message>
-        MINT RELEASE TOKENS
+        MINT PROJECT TOKENS
       </Message>
       <CoinBackgroundContainer/>
       <CoinLarge/>

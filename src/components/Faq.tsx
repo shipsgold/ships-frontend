@@ -84,70 +84,74 @@ function Faq(): React.ReactElement {
               <Summary>
               Wait what is SHIPS?
               </Summary>
-            SHIPS is a platform that allows developers to mint fungible tokens 
-            with every significant software release. These release tokens 
-            are then able to be purchased by the community 
-            and/or distributed to contributors to the project.
+              SHIPS is a platform that allows OSS creator to build token economies for their projects.
+              The platform helps you launch an NFT collection, create a DAO and structure tokens for your organization or project. 
+            </Details>
+          </FaqQuestion>
+          <FaqQuestion>
+            <Details open>
+              <Summary>
+              How does it work?
+              </Summary>
+              First you setup an NFT collection size, depending on your community and goals.
+              Then you set a release date, and the platform helps you select the right token structure to activate your community.
               <br />&nbsp;<br />
-            The release tokens are good for developer specified services, such as
-            preimum support, building incentivized knowledge bases, 
-            swag or market speculation. 
+              The platform helps you launch a DAO that allows the people that purchase your NFT to become members, 
+              and claim utility tokens for holding your NFT. We also allow you to setup contributor rewards and contributor NFTs. 
+              Contributor rewards incentivizes active participation in making the ecosystem better. 
               <br />&nbsp;<br />
-            At the end of a release token life-cycle developers retire the token,
-            allowing token holders to have chance to claim a NFT(non-fungible token) that represents
-            the software release. Imagine owning Apache 2.0 version 1.0 NFT.
-              <br />&nbsp;<br />
-            The platform we are building is built to make it easy for developers
-            to create knowledge bases and offer preimium support services. We are 
-            building it in a way that the community can participate in providing
-            incentivized support lifting the open source boat.
+              The tokens that are claimed by NFT holders and contributors are utility tokens. 
+              These tokens  can be used to create licenses, give access to APIs, 
+              or for users and non NFT holders to purchase for support from the project. The sky is the limit!
             </Details>
           </FaqQuestion>
           <FaqQuestion>
             <Details>
               <Summary>What are the incentives?</Summary>
-            SHIPS actually consists of a fungible protocol token $SHPS in addition
-            to the developer owned tokens. The $SHPS token is used to set fees charged
-            on txs surrounding purchase of developer minted tokens.
+              People are incentivized to purchase your  NFT for the same reasons that people use OpenCollective and GitHub sponsors today. 
+              Only there is more upside than what you can get with a single one shot donation.  
               <br />&nbsp;<br />
-            In addition to the fees, SHPS represents an opportunity for developers
-            that add value to the network to earn SHPS. Periodically SHPS are minted and
-            distributed to projects that have added value to the network on a weighted
-            selection basis, based off of developer contributions to the overall network.
+              People in general need support, they want to give back to the project, and now with ships they 
+              can also tap into the project network. They can be a part of the project, by holding the project NFT. 
+              Holding the NFT is to belong to the project social club! 
               <br />&nbsp;<br />
-            This allows developers that create high quality projects, to gain access to
-            a broader reward ecosystem. Helping encourage maintenance and development.
+              Being a holder comes with benefits such as gated discord, DAO membership, being a part of the of the network, 
+              and potential benefits like free access to hosted services and the ability to help direct the project. 
+              <br />&nbsp;<br />
+              Additionally, there are incentives for people, that contribute to simply earn an NFT or earn utilty tokens. 
+              These rewards regular contributors for building a deeper knowledge of the project.  
+              Contributor token holders could even become verified service providers for the project receiving tokens 
+              for helping people use the project or projects in your organization.
+              <br />&nbsp;<br /> 
+              With a token economy in place. People can now structure and build value around your project, 
+              and get the support of the entire community behind it. 
+              A rising tide lifts all boats!
             </Details>
           </FaqQuestion>
           <FaqQuestion>
             <Details>
               <Summary>Why would I do this?</Summary>
-            We believe that a way forward to improve open source dynamics is to
-            open, open source to different monetary opportunities. 
+            You would do this if you want to grow your project in a community first way. Open source and Open economy.  
+            We believe that this is the way forward to make OSS sustainable, using tokens as a schelling point for the software. 
               <br />&nbsp;<br />
-            Creating a marketplace means flexibility, and the ability to 
-            trade access tokens or allow community to support request for help to problems, or 
-            spend on the economic well being of OSS is important.  
-            People can contribute in a variety of ways and still
-            have access to economic opportunities previously restricted to core team.
-              <br />&nbsp;<br />
-            Additionally, the target is to get those individual contributors and creators 
-            access to the $SHPS network reward through contributions. Making OSS as a concept
-            and the projects tied into the network stronger as whole. 
+            It shouldn&#39;t matter if you&#39;re making a core library or building an application, 
+            being a part of the community should allow anyone to take part in the ecosystem.
             </Details>
           </FaqQuestion>
           <FaqQuestion>
             <Details>
               <Summary>How do I signup?</Summary>
-             Right now we are developing the software to release soon and debating
-             over a few protocol details. We&apos;d love to have you for our
-             closed <a target="_blank" href="https://forms.gle/nNHQ3t4YdzVkiv3HA" rel="noreferrer">beta</a> and &apos; also love your help tuning the protocol
+              Right now we&#39;re building out the platform. 
+              Sign up for the&nbsp;<a target="_blank" href="https://forms.gle/nNHQ3t4YdzVkiv3HA" rel="noreferrer">closed beta</a> 
+              &nbsp;look out for our first token drop, that will signal the launch of SHIPS.
             </Details>
           </FaqQuestion>
           <FaqQuestion>
             <Details>
               <Summary>When will you be live?</Summary>
-            We are targeting production in 2021.
+              We&39;re targeting the end of 2021 for the full release, 
+              and the predecessor super early test DAO sometime in during the last quarter of 2021. Join the &nbsp;  
+              <a target="_blank" href="https://discord.gg/SmJv96G9PX" rel="noreferrer">discord</a> to find out.
             </Details>
           </FaqQuestion>
         </FaqContent>
