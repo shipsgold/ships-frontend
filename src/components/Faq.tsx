@@ -149,7 +149,7 @@ function Faq(): React.ReactElement {
           <FaqQuestion>
             <Details>
               <Summary>When will you be live?</Summary>
-              We&39;re targeting the end of 2021 for the full release, 
+              We&#39;re targeting the end of 2021 for the full release, 
               and the predecessor super early test DAO sometime in during the last quarter of 2021. Join the &nbsp;  
               <a target="_blank" href="https://discord.gg/SmJv96G9PX" rel="noreferrer">discord</a> to find out.
             </Details>
